@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class TestComponent implements OnInit {
 
    public input
-   public p
+   public p = ''
 
   constructor() { }
 
