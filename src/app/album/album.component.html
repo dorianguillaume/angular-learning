@@ -1,20 +1,22 @@
-<div class="row">
-    <div class="col-sm-6">
-        <div class="rounded-0 card text-white bg-primary mt-5 m-sm-5">
-            <div class="card-header">{{album2.author}}</div>
-            <div class="card-body">
-                <h5 class="card-title">{{album2.name}}</h5>
-                <p class="card-text">Note de l'album : {{album2.grade}}</p>
+    <div class="rounded-0 card mt-5 m-sm-5" [ngClass]="bgColor.get(album)">
+        <div class="card-header">{{album.author}}</div>
+        <div class="card-body">
+            <h5 class="card-title">{{album.name}}</h5>
+            <img [src]="album.src" class="img-fluid mb-3" [alt]="'Pochette album '+ album.name" />
+            <p class="card-text text-center">Note de l'album : <span class="font-weight-bold">{{album.grade}}</span></p>
+            <ul class="list-group mb-3">
+                <li class="list-group-item" *ngFor="let song of album.songs">{{song.title}}</li>
+            </ul>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="grade1">Note</span>
+                </div>
+                <input type="number" class="form-control" placeholder="Votre note" aria-describedby="grade1"
+                    [(ngModel)]="album.grade" (blur)='isValid(album)'>
+            </div>
+            <div class="col-lg-12 text-center mt-3">
+                <button id="" class="btn" [ngClass]="btnColor.get(album)" [disabled]="gradeEmpty.get(album)"
+                    (click)="displayGrade(album); colorAlbum(album)">Enregistrer la note</button>
             </div>
         </div>
     </div>
-    <div class="col-sm-6">
-        <div class="rounded-0 card text-white bg-primary mt-5 m-sm-5">
-            <div class="card-header">{{album1.author}}</div>
-            <div class="card-body">
-                <h5 class="card-title">{{album1.name}}</h5>
-                <p class="card-text">Note de l'album : {{album1.grade}}</p>
-            </div>
-        </div>
-    </div>
-</div>

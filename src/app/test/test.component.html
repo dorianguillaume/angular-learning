@@ -19,12 +19,42 @@
             <p>{{ p }}</p>
         </div>
     </div>
-    <div class="row">
+    <div class="row mb-3">
         <div class="col-lg-12">
             <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
+                <input type="checkbox" class="custom-control-input" id="item1" [checked]="state">
+                <label class="custom-control-label" for="item1">Item 1</label>
             </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="item2"[checked]="state">
+                <label class="custom-control-label" for="item2">Item 2</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="item3" [checked]="state">
+                <label class="custom-control-label" for="item3">Item 3</label>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-sm-6 text-center mb-3 mb-sm-0">
+            <button id="add" class="btn btn-primary" (click)='checkAll()'>Cocher tout !</button>
+        </div>
+        <div class="col-sm-6 text-center">
+            <button id="add" class="btn btn-primary" (click)='uncheckAll()'>Décocher tout !</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span [ngClass]='checkMail' class="input-group-text" [style.color]="isValid ? 'black' : 'white'" id="mail">@</span>
+            </div>
+            <input type="email" class="form-control" placeholder="example@exemple.fr" aria-describedby="mail" (blur)='getMail($event)'>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span [ngClass]='checkMail' [style.color]="isValid ? 'black' : 'white'" class="input-group-text" id="mailConfirm">@ Confirme</span>
+            </div>
+            <input type="email" class="form-control" placeholder="example@exemple.fr" aria-describedby="mailConfirm" (blur)='compare($event)'>
         </div>
     </div>
 </div>
