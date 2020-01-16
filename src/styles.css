@@ -1,1 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    background-color: #ddd;
+  }
+  
+  .container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .nav {
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .nav-items {
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+  }
+  .nav-items {
+    display: flex;
+  }
+  .nav-items li {
+    border-right:  1px solid #ccc;
+    padding: 5px 15px;
+    list-style: none;
+  }
+  .nav-items li:hover {
+    color: #ddd;
+    cursor: pointer;
+  }
+  
+  .nav-items li.active {
+    color: #bbb;
+    text-decoration: underline;
+  }
+  
+  .nav-items li:last-child{
+    border-right: none;
+  }
+  .nav-content {
+    padding: 20px;
+    min-width: 250px;
+  }

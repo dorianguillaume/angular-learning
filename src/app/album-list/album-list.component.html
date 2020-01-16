@@ -1,1 +1,5 @@
-
+<div class="row">
+    <ul class="list-group">
+        <a *ngFor="let album of albums" [routerLink]="['/album', album.name]" class="list-group-item" >Album : {{album.name}}</a>
+    </ul>
+</div> 

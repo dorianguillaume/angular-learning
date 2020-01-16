@@ -1,7 +1,7 @@
     <div class="rounded-0 card mt-5 m-sm-5" [ngClass]="bgColor.get(album)">
         <div class="card-header">{{album.author}}</div>
         <div class="card-body">
-            <h5 class="card-title">{{album.name}}</h5>
+            <h5 class="card-title">{{album.name | titlecase}}</h5>
             <img [src]="album.src" class="img-fluid mb-3" [alt]="'Pochette album '+ album.name" />
             <p class="card-text text-center">Note de l'album : <span class="font-weight-bold">{{album.grade}}</span></p>
             <ul class="list-group mb-3">

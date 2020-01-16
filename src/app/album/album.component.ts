@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Album } from '../model/Album';
 import { Song } from '../model/Song';
+import { ActivatedRoute } from '@angular/router';
+import { AlbumService } from '../shared/album.service';
 
 
 @Component({
@@ -10,23 +12,24 @@ import { Song } from '../model/Song';
 })
 export class AlbumComponent implements OnInit {
 
-  @Input() album;
+  album;
 
-  albums: Album[] = new Array()
 
   gradeEmpty: Map<Album, boolean> = new Map<Album, boolean>(); 
   bgColor: Map<Album, string> = new Map<Album, string>();
   btnColor: Map<Album, string> = new Map<Album, string>();
 
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute, private albumService: AlbumService) { }
 
   ngOnInit() {
-    this.albums.push(this.album);
-
-    this.albums.forEach(element => {
-      this.isValid(element)
-      this.btnColor.set(element, 'btn-primary')
-    });
+    
+    this.activatedRoute.paramMap.subscribe(
+      (params) => {
+        console.log(params.get('id'))
+        this.album = this.albumService.findAlbum(params.get('id'))
+        console.log(this.album)
+      }
+    )
   }
 
   isValid(album){

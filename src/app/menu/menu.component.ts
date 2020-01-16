@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../model/User';
+import { UserService } from '../shared/user.service';
 
 @Component({
   selector: 'app-menu',
@@ -10,11 +11,12 @@ export class MenuComponent implements OnInit {
 
   title = 'Mes Albums !!'
   date = new Date().toLocaleDateString()
-  user = new User('Guillaume', 'Dorian')
+  user: User
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+    this.user = this.userService.getUser()
   }
 
 }
